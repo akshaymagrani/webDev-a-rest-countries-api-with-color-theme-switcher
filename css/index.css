@@ -1,0 +1,41 @@
+:root{
+    /* ---- Dark Mode */
+    --Dark-Blue-Elements: hsl(209, 23%, 22%);
+    --Very-Dark-Blue-bg: hsl(207, 26%, 17%);
+    /* ----Light Mode */
+    --Very-Dark-Blue-Text: hsl(200, 15%, 8%);
+    --Dark-Gray-Input: hsl(0, 0%, 52%);
+    --Very-Light-Gray-Bg: hsl(0, 0%, 98%);
+    
+    --White: hsl(0, 0%, 100%);
+    /* font size */
+    --text-index-size: 14px;
+    --text-detailed-size: 16px;
+}
+
+body{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--Very-Light-Gray-Bg);
+}
+.text-index-size{
+    font-size: var(--text-index-size);
+}
+.text-detailed-size{
+    font-size: var(--text-detailed-size);
+}
+.form-control{
+    border: none;
+    border-radius: 0.25rem;
+}
+.input-group-text{
+    background-color: white;
+    border: none;
+    border-radius: 0.25rem;
+}
+
+svg{
+    width: 1.5em;
+}
