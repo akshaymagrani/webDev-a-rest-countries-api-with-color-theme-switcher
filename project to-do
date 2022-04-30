@@ -1,0 +1,73 @@
+TO - DO 
+
+25-Apr-2022 :
+
+    1. Craft the theme changer
+
+        -> I need something like a checkbox, which will, depanding on the state of check, change the theme of the document.
+        
+            -> Done. // tip: next step: change the icons into svg for better ability to fill the coloring.
+
+    2. Make the select filter button functional
+
+        -> I need to check for a region in the list of objects. 
+        Alogrithms would comeuseful here. Don't know enough to make a jsudgement yet.
+        Iterate over the list and based on the selected value, select the parent class that has that value and remove the others.
+        
+        -> Partially done. Will do remaining part tomorrow.
+
+    3. Create detail.html file.
+
+        // tip : add autocomplete to search when doing it. Simple using jQuery doc - https://jqueryui.com/autocomplete/
+        
+        -> Not done.
+
+26-Apr-2022 : 
+
+    1. -> 1. from 25-Apr-22 modified. Styling added to CSS file and dynamic nature of theme change added to jQuery. It works! 
+    
+        -> Still need to work with svg icon.
+
+    2. -> 3. from 25-Apr-22 : Create detail.html. 
+        HTML done. It was mostly a copy-paste work.
+
+    3. Add a back btn to return to the index.html. Done and functioning. 
+
+        -> Done. Style it to match the styling of the requirement.
+
+    4. Add a link to cards in index.html to take to default.html. Done and functioning. Had to modify the CSS file due to anchor tag '<a>'.
+
+        -> Done.
+
+    5. js not functioning. Currently the default.html is linked to index.js which tries to set the value of germany image src to '' but it is not defined.
+
+        -> Need to modify the index.js code so that it begins to set the values only if the respective elements are defined (basically async behaviour) else escape to next block. Too time consuming and load intensive. 
+
+        -> Directly obtain the country and add its values and run associated functions. Define individual functions for each country and based on selection execute the function after page reloads. Use switch case in js and data-* attribute in html.
+
+    27-Apr-2022 :
+
+    1. Obtain the myJsonCountries from index.js in default.js so that I do not have to re-fetch those details. 
+
+        -> Gonna add dafault.js to the index.html.Apparently that could help - StackOverFlow.
+
+    29-Apr-2022 :
+
+    1. Apply the filter to index.html
+
+        -> Create a function that will run when the region is selected and when done
+            -> iterate over all the array to find which has the region that matches and return its array index.
+            -> Add d-none to all the other cards which do not have the region.
+                -> Done.
+    
+    30-Apr-2022 :
+
+    1. Style the detail.html to match the design.
+        -> Done.
+
+    2. Carry the theme from index.html to detail.html. If user has selected dark mode in index.html, it should be dark mode in detail.html as well and vice versa.
+        -> Pending.
+
+
+
+

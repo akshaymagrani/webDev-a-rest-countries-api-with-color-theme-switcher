@@ -7,7 +7,7 @@
     --Dark-Gray-Input: hsl(0, 0%, 52%);
     --Very-Light-Gray-Bg: hsl(0, 0%, 98%);
     
-    --White: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 100%);
     /* font size */
     --text-index-size: 14px;
     --text-detailed-size: 16px;
@@ -20,6 +20,13 @@ body{
     font-family: 'Nunito Sans', sans-serif;
     background-color: var(--Very-Light-Gray-Bg);
 }
+.card:hover{
+    transform: scale(1.01);
+}
+.container1, .card-container{
+    max-width: 1320px;
+    margin: auto;
+}
 .text-index-size{
     font-size: var(--text-index-size);
 }
@@ -30,12 +37,131 @@ body{
     border: none;
     border-radius: 0.25rem;
 }
+.form-control:focus, .themeChanger:focus{
+    box-shadow: 0 0 0 0.1rem rgb(60 60 70 / 25%);
+}
+.input-group{
+    width: auto;
+}
 .input-group-text{
     background-color: white;
     border: none;
     border-radius: 0.25rem;
 }
-
+h1{
+    padding: 0.375rem 0.75rem;
+}
+#filter{
+    min-width: 250px;
+    padding: 0.375rem 0.75rem;
+    border: 0;
+}
 svg{
-    width: 1.5em;
+    width: 1.5em;  
+}
+.image {
+    width: 18em;
+    height: 175px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.btn-theme-checkbox:checked a{
+    color: white;
+}
+
+/* ========= 
+Theme Classes 
+============ */
+
+.icon-day-theme, .icon-night-theme {
+    width: 25px;
+    height: 25px;
+}
+.btn-ThemeChanger{
+    position: relative;
+}
+.btn-theme-checkbox{
+    /* remove the default checkbox */
+    display: none;
+}
+.btn-theme-checkbox ~ .icon-day-theme, .btn-theme-checkbox:checked ~ .icon-night-theme {
+    display: inline;
+}
+.btn-theme-checkbox ~ .icon-night-theme, .btn-theme-checkbox:checked ~ .icon-day-theme {
+    display: none;
+}
+.btn-theme-checkbox:checked ~ span{
+    color: white;
+}
+
+    /* ==== Dark theme classes ====*/
+.text-dark-theme{
+    color: white;
+    fill: white;
+}
+.bg-body-dark-theme{
+    background-color: var(--Very-Dark-Blue-bg);
+    color: white;
+}
+.bg-elements-dark-theme{
+    background-color: var(--Dark-Blue-Elements);
+    color: white;
+    fill: white;
+}
+.element-dark-shadows{
+    box-shadow: 0px 2px 4px 0rem hsl(0deg 0% 10%);
+    border: 0;
+}
+
+    /* ==== Light theme classes ====*/
+.text-light-theme{
+    color: black;
+    fill: black;
+}
+.bg-body-light-theme{
+    background-color: var(--Very-Light-Gray-Bg);
+    color: black;
+}
+.bg-elements-light-theme{
+    background-color: var(--White);
+    color: black;
+    fill: black;
+}
+.element-light-shadows{
+    box-shadow: 0px 2px 4px 0rem hsl(0deg 0% 80%);
+    border: 0;
+}
+
+/* ====================
+    Detail.html Styling
+    =================== */
+.div-detail-btn-back{
+    max-width: 1332px;
+    text-align: center;
+    display: flex;
+    margin: 1em;
+}
+.div-detail-country{
+    max-width: 1332px;
+}
+    .div-image, .div-detail-card-body{
+    width:100%;
+    height: auto;
+    padding: 0;
+} 
+@media screen and (min-width: 768px){
+    .div-detail-btn-back{
+        margin: 1em auto;
+    }
+    .div-image, .div-detail-card-body{
+        width:50%;
+        height: auto;
+        padding: 1em 1em 1em;
+        }    
+    .div-card-body-width{
+        width: 50%;
+    }
 }
