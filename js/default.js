@@ -47,10 +47,9 @@ async function getCountries(){
 
 let countries = getCountries();
 let i = localStorage.getItem('cardId');
-    console.log(i);
+    // console.log(i);
 countries.then((myJsonData) => {
-    let i = localStorage.getItem('cardId');
-    console.log(i);
+    // console.log(i);
     let countryImage = document.getElementsByClassName('countryImage');
     let country = document.getElementsByClassName('country');
     let name = document.getElementsByClassName('name');
@@ -77,8 +76,18 @@ countries.then((myJsonData) => {
     currencies[0].innerHTML = myJsonData[i][0].currencies[0].name;
     languages[0].innerHTML = myJsonData[i][0].languages[0].name;
 
-    for (let i = 0; i < myJsonData[i][0].borders[0].length; i++){
-        borderCountries[i].innerHTML = myJsonData[i][0].borders[i];    
+    console.log(myJsonData[i][0].borders);
+    for (let j = 0; j < borderCountries.length; j++){
+        borderCountries[j].innerHTML = myJsonData[i][0].borders[j];    
     }
-    
 });
+
+// theme changer local storage
+let detailBtnTheme = document.getElementById("detail-btnDarkTheme");
+
+function themeStatus() {
+    localStorage.setItem('themeStatusDark', detailBtnTheme.checked);
+    let themeStatusS = localStorage.getItem('themeStatusDark');
+    console.log("from index.js, btnTheme.checked: " + detailBtnTheme.checked + "; " + "themeStatus: " + themeStatusS);
+}
+btnTheme.addEventListener('click', themeStatus);

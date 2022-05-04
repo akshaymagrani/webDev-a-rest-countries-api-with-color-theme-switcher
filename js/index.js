@@ -9,25 +9,25 @@ async function getCountries(){
     let algeria = await fetch("https://restcountries.com/v2/name/algeria");   
 
     let myJsonGermanyData = await germany.json(); // 0
-    console.log(typeof(country), myJsonGermanyData);
+    // console.log(typeof(country), myJsonGermanyData);
 
     let myJsonUSAData = await usa.json(); // 1
-    console.log(typeof(country), myJsonUSAData);
+    // console.log(typeof(country), myJsonUSAData);
 
     let myJsonBrazilData = await brazil.json(); // 2
-    console.log(typeof(country), myJsonBrazilData);
+    // console.log(typeof(country), myJsonBrazilData);
 
     let myJsonIcelandData = await iceland.json(); // 3
-    console.log(typeof(country), myJsonIcelandData);
+    // console.log(typeof(country), myJsonIcelandData);
 
     let myJsonAfghanistanData = await afghanistan.json(); // 4
-    console.log(typeof(country), myJsonAfghanistanData);
+    // console.log(typeof(country), myJsonAfghanistanData);
 
     let myJsonNigeriaData = await nigeria.json(); // 5
-    console.log(typeof(country), myJsonNigeriaData);
+    // console.log(typeof(country), myJsonNigeriaData);
     
     let myJsonAlgeriaData = await algeria.json(); // 6
-    console.log(typeof(country), myJsonAlgeriaData);
+    // console.log(typeof(country), myJsonAlgeriaData);
 
     let myJsonAlbaniaData = await albania.json(); // 7
     console.log(typeof(country), myJsonAlbaniaData);
@@ -42,7 +42,7 @@ async function getCountries(){
     // return dataJson;
 // =========================
 
-    return myJsonCountriesData; //in the end return an array of all the countries.
+    return myJsonCountriesData; // return an array of all the countries.
 }
 
 // obtaining unique region values from the fetched data using 'set' and inserting the same in options tag in index.html
@@ -59,12 +59,12 @@ germany.then((myJsonData) => {
         setPopulation.add(myJsonData[i][0].population);
     }
     const iterSetRegion = setRegion.entries();
-    console.log(iterSetRegion);
+    // console.log(iterSetRegion);
     return iterSetRegion;
 }).then((iterSetRegion) => {
     let filter = document.getElementById("filter");
     for (const entry of iterSetRegion){
-        console.log(entry);
+        // console.log(entry);
         let option = document.createElement('option');
         option.setAttribute('value', entry[0]);
         option.innerText = entry[0] + " ";
@@ -75,12 +75,12 @@ germany.then((myJsonData) => {
 
 let filterBtn = document.querySelector('#filter');
 let card = document.getElementsByClassName('card');
-console.log(card);
+// console.log(card);
 async function ex() {
     let output = await filterBtn.value;
     let cardRegion = document.getElementsByClassName('Region');
     let cardRegionValue = await cardRegion.innerHTML;
-    console.log(cardRegion);
+    // console.log(cardRegion);
     for (let i = 0; i < card.length; i++) {
         if (output === 'Filter by Region') {
             card[i].classList.remove('d-none');
@@ -127,6 +127,8 @@ countries.then((myJsonData) => {
     localStorage.setItem('myCountryJsonData', country);
 });
 
+// Getting the card - id of the card that is clicked to obtain its value in local storage and display more info about it in detail.html
+
 let aTag = document.getElementsByTagName('a');
 console.log(aTag);
 for (let i = 0; i < aTag.length; i++){
@@ -134,23 +136,38 @@ for (let i = 0; i < aTag.length; i++){
         localStorage.setItem('cardId', aTag[i].getAttribute("data-card-value"));
     });
 }
+
+
 let btnTheme = document.getElementById("btnDarkTheme");
+
 function themeStatus() {
     localStorage.setItem('themeStatusDark', btnTheme.checked);
-    console.log(btnTheme.checked);
+    let themeStatus = localStorage.getItem('themeStatusDark');
+    console.log("from index.js, btnTheme.checked: " + btnTheme.checked + "; " + "themeStatus: " + themeStatus);
 }
 btnTheme.addEventListener('click', themeStatus);
 
-// when a card is clicked
-// -> export the JSON data related with the card country to default.js
-//      -> don't know enough about export.
-//          -> Read the MDN export docs and summarize the knowledge.
-// -> import said data into default.js and display it on the screen.
-//      -> don't know enough about import.
-//          -> Read the MDN export docs and summarize the knowledge.
-
-let h = localStorage.getItem('cardId');
-console.log(h);
-
-
+let searchingCountries = document.getElementById('search');
+searchingCountries.addEventListener('keydown', (e) => {
+    if(e.key == 'Enter'){
+        console.log(searchingCountries.value);
+        countries.then((myJsonData) => {
+            let output = searchingCountries.value;
+            let cardName = document.getElementsByClassName('Country');
+            // let cardRegionValue = await cardRegion.innerHTML;
+            // console.log(cardRegion);
+            for (let i = 0; i < card.length; i++) {
+                if (output === '') {
+                    card[i].classList.remove('d-none');
+                }
+                else if(output.toLowerCase() !== cardName[i].innerHTML.toLowerCase()) {
+                    card[i].classList.add('d-none');
+                }
+                else{
+                    card[i].classList.remove('d-none');
+                }
+            }
+        });
+    }
+});
 

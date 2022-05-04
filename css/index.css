@@ -37,7 +37,7 @@ body{
     border: none;
     border-radius: 0.25rem;
 }
-.form-control:focus, .themeChanger:focus{
+.form-control:focus, .themeChanger:focus, .detail-themeChanger:focus{
     box-shadow: 0 0 0 0.1rem rgb(60 60 70 / 25%);
 }
 .input-group{
@@ -67,9 +67,18 @@ svg{
 a {
     text-decoration: none;
     color: black;
+    fill: black;
 }
-.btn-theme-checkbox:checked a{
+.btn-theme-checkbox:checked ~ a, .detail-btn-theme-checkbox:checked ~ a{
     color: white;
+}
+#search{
+    line-height: 2;
+}
+@media (min-width: 756px) {
+    svg{
+        width: 2em;
+    }
 }
 
 /* ========= 
@@ -83,18 +92,24 @@ Theme Classes
 .btn-ThemeChanger{
     position: relative;
 }
-.btn-theme-checkbox{
+.btn-themeChanger{
+    line-height: 0;
+}
+.btn-theme-checkbox, .detail-btn-theme-checkbox{
     /* remove the default checkbox */
     display: none;
 }
-.btn-theme-checkbox ~ .icon-day-theme, .btn-theme-checkbox:checked ~ .icon-night-theme {
-    display: inline;
+.btn-theme-checkbox ~ .icon-day-theme, .btn-theme-checkbox:checked ~ svg path, .detail-btn-theme-checkbox ~ .icon-day-theme, .detail-btn-theme-checkbox:checked ~ svg path {
+    /* display: inline; */
+    fill: black;
 }
-.btn-theme-checkbox ~ .icon-night-theme, .btn-theme-checkbox:checked ~ .icon-day-theme {
-    display: none;
+.btn-theme-checkbox ~ .icon-night-theme, .btn-theme-checkbox:checked ~ svg path, .detail-btn-theme-checkbox ~ .icon-night-theme, .detail-btn-theme-checkbox:checked ~ svg path {
+    /* display: none; */
+    fill: white;
 }
-.btn-theme-checkbox:checked ~ span{
+.btn-theme-checkbox:checked ~ span,.detail-btn-theme-checkbox:checked ~ span, a.btn-back{
     color: white;
+    fill: white;
 }
 
     /* ==== Dark theme classes ====*/
@@ -143,6 +158,9 @@ Theme Classes
     text-align: center;
     display: flex;
     margin: 1em;
+}
+.btn-back {
+    margin: 0 1em;
 }
 .div-detail-country{
     max-width: 1332px;
