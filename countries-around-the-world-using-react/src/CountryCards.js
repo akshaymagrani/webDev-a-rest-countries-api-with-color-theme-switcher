@@ -1,23 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
+import { selectCountry } from './store.tsx'
 import CountryCard from "./CountryCard";
+import { useSelector } from 'react-redux';
 
 export default function CountryCards() {
-    // eslint-disable-next-line
-    const {data: countries, isLoading} = useQuery({
-        queryKey: ["countries"],
-        queryFn: () => fetch('https://restcountries.com/v3.1/all').then((res) => res.json())
-    });
-
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
+    const data = useSelector(selectCountry);
+    console.log(data);
 
     return (
-        <div className='flex flex-wrap justify-evenly'>
+        <div className='flex flex-wrap justify-evenly min-h-screen'>
             { 
-                countries.map((country) => 
-                    (<CountryCard key={country.cca2} countryData={country} />))
-                    .slice(0, 20)
+                (data || []).map((c) => 
+                    (<CountryCard key={c.cca2} countryData={c} />))
             }
         </div>
     );

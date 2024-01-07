@@ -5,7 +5,7 @@ export default function Header(props) {
                 <div className="py-4 flex flex-row justify-between">
                     <h1 className="font-bold">Where in the World?</h1>
                     <label htmlFor="btnDarkTheme" className="flex">
-                        <input type='checkbox' id="btnDarkTheme" className="btn-theme-checkbox" name="btn-theme" checked={props.theme} onClick={props.changeTheme}/>
+                        <input type='checkbox' id="btnDarkTheme" className="btn-theme-checkbox" name="btn-theme" checked={props.theme} onChange={props.changeTheme}/>
                         
                         {
                             props.theme ? 

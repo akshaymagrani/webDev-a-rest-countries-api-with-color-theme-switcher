@@ -1,5 +1,5 @@
 function CountryCard({ countryData }) {
-    const { name, capital, population, region, flags } = countryData;
+    const { name, capital, population, region, flags, continents } = countryData;
     return (
         <a href="./detail.html" className="w-[300px]">
             <div className="card m-3 shadow rounded-md">
@@ -15,7 +15,7 @@ function CountryCard({ countryData }) {
                         <span className="Region region fw-light">{region}</span>
                     </p>
                     <p className="card-text fw-bold mb-1">Captial: 
-                        <span className="Capital fw-light">{capital}</span>
+                        <span className="Capital fw-light">{capital} {continents[0]}</span>
                     </p>
                 </div>
             </div>

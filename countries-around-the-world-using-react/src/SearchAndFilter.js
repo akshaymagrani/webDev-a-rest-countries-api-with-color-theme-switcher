@@ -1,4 +1,14 @@
+import { setSearch , selectSearch, setFilter, selectFilter } from './store.tsx';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCountry } from './store.tsx';
+
 export function SearchAndFilter() {
+    const country = useSelector(selectCountry);
+    const search = useSelector(selectSearch);
+    const dispatch = useDispatch();
+
+    const filter = useSelector(selectFilter);
+
     return (
         <div className="flex flex-wrap items-center justify-between">
             <div className="flex input-group my-4 shadow ui-widget items-center">
@@ -12,12 +22,29 @@ export function SearchAndFilter() {
                     </svg>
                 </span>
                 <label htmlFor="search">
-                    <input type="text" id="search" className="form-control p-1" placeholder="Search for a country" />
+                    <input 
+                        type="text" 
+                        id="search" 
+                        className="form-control p-1" 
+                        placeholder="Search for a country" 
+                        value={search}
+                        onChange={(event) => dispatch(setSearch(event.target.value))}
+                        />
                 </label>
             </div>
             <label htmlFor="filter" className="py-4 bg-elements-light-them">
-                <select id="filter" placeholder="Filter by region" className="element-light-shadows bg-elements-light-theme">
-                    <option>Filter by Region</option>
+                <select id="filter" placeholder="Filter by region" className="element-light-shadows bg-elements-light-theme" value={filter} onChange={(event) => dispatch(setFilter(event.target.value))}>
+                    <option value={""}>Filter by Region</option>
+                    {
+                        (country ?? []).reduce((acc, current) => {
+                            if (!acc.find(item => item === current.continents[0])) {
+                                acc.push(current.continents[0]);
+                            }
+                            return acc;
+                        }, []).map((continent, index) => (
+                            <option key={index} value={continent}>{continent}</option>
+                        ))
+                    }
                 </select>
             </label>
         </div>
