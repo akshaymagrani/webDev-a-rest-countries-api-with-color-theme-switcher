@@ -7,7 +7,6 @@ export default function CountryCards() {
         queryKey: ["countries"],
         queryFn: () => fetch('https://restcountries.com/v3.1/all').then((res) => res.json())
     });
-    console.log(countries);
 
     if (isLoading) {
         return <p>Loading...</p>;
@@ -19,7 +18,6 @@ export default function CountryCards() {
                 countries.map((country) => 
                     (<CountryCard key={country.cca2} countryData={country} />))
                     .slice(0, 20)
-                    .sort((a,b) => a.name.localeCompare(b.name))
             }
         </div>
     );

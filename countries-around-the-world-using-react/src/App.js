@@ -27,7 +27,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
+      <div className={`${theme ? 'lightTheme': 'darkTheme'}`}>
         <Header theme={theme} changeTheme={changeTheme}/>
         <div className='mx-auto max-w-5xl'>
           <SearchAndFilter />
