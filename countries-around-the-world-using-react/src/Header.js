@@ -4,9 +4,9 @@ export default function Header(props) {
             <div className="mx-auto max-w-5xl">
                 <div className="py-4 flex flex-row justify-between">
                     <h1 className="font-bold">Where in the World?</h1>
-                    <label htmlFor="btnDarkTheme" className="flex" onClick={props.changeTheme}>
-                        <input type='checkbox' id="btnDarkTheme" className="btn-theme-checkbox" name="btn-theme" checked={props.theme} onClick={() => {}}/>
-                        <span>Light Mode</span>
+                    <label htmlFor="btnDarkTheme" className="flex">
+                        <input type='checkbox' id="btnDarkTheme" className="btn-theme-checkbox" name="btn-theme" checked={props.theme} onClick={props.changeTheme}/>
+                        
                         {
                             props.theme ? 
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
@@ -22,11 +22,11 @@ export default function Header(props) {
                                     </g>
                                 </svg>
                         }
-                        {/* { */}
-                            {/* props.theme ?  */}
-                                
+                        {
+                            props.theme ? 
+                                <span>Light Mode</span> :
                                 <span>Dark Mode</span>
-                        {/* } */}
+                        }
                     </label>
                 </div>
             </div>

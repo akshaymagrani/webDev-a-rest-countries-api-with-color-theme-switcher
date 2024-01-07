@@ -1,5 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 export function SearchAndFilter() {
     return (
         <div className="flex flex-wrap items-center justify-between">

@@ -1,8 +1,10 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import CountryCard from './CountryCard';
 import Header from './Header';
 import { SearchAndFilter } from './SearchAndFilter';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import CountryCards from './CountryCards';
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -21,16 +23,18 @@ function App() {
   }
   ,[]);
 
+  const queryClient = new QueryClient();
+
   return (
-    <div>
-      <Header theme={theme} changeTheme={changeTheme}/>
-      <div className='mx-auto max-w-5xl'>
-        <SearchAndFilter />
-        <div className='flex flex-wrap justify-evenly'>
-          {country.map((country) => (<CountryCard key={country.cca2} countryData={country} />)).slice(0,20)}
+    <QueryClientProvider client={queryClient}>
+      <div>
+        <Header theme={theme} changeTheme={changeTheme}/>
+        <div className='mx-auto max-w-5xl'>
+          <SearchAndFilter />
+          <CountryCards />
         </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
 
