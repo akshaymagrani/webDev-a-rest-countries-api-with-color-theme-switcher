@@ -5,6 +5,8 @@ import { SearchAndFilter } from './SearchAndFilter';
 import CountryCards from './CountryCards';
 import { Provider } from 'react-redux';
 import { store } from './store.tsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Details from './Details.js'
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -25,13 +27,21 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className={`${theme ? 'lightTheme': 'darkTheme'}`}>
-        <Header theme={theme} changeTheme={changeTheme}/>
-        <div className='mx-auto max-w-5xl'>
-          <SearchAndFilter />
-          <CountryCards />
-        </div>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Header theme={theme} changeTheme={changeTheme} />}>
+            <Route index='/' element={     
+                <div className={`${theme ? 'lightTheme': 'darkTheme'}`}>
+                  <div className='mx-auto max-w-5xl'>
+                    <SearchAndFilter />
+                    <CountryCards />
+                  </div>
+                </div>}
+            />
+            <Route path='details/:id' element={<Details />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }

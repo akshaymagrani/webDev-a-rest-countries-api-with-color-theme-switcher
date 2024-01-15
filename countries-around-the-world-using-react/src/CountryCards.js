@@ -9,8 +9,8 @@ export default function CountryCards() {
     return (
         <div className='flex flex-wrap justify-evenly min-h-screen'>
             { 
-                (data || []).map((c) => 
-                    (<CountryCard key={c.cca2} countryData={c} />))
+                (data || []).map((country, index) => 
+                    (<CountryCard key={index} countryData={country} />))
             }
         </div>
     );

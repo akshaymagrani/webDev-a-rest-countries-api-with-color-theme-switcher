@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { selectCountry } from "./store.tsx";
 function CountryCard({ countryData }) {
-    const { name, capital, population, region, flags, continents } = countryData;
+    const { id, name, capital, population, region, flags, continents } = countryData;
+    const data = useSelector(selectCountry);
     return (
-        <a href="./detail.html" className="w-[300px]">
+        <Link to={`details/${name.common}`} className="w-[300px]">
             <div className="card m-3 shadow rounded-md">
-                <img src={flags.svg} className="card-img-top image" alt="Algeria Flag" />
+                <img src={flags.svg} className="card-img-top image" alt="Flag" />
                 <div className="card-body p-3">
                     <h5 className="card-title mb-4 Country">Country:  
                         {name.common}
@@ -19,7 +23,7 @@ function CountryCard({ countryData }) {
                     </p>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 
