@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function CountryCards() {
     const data = useSelector(selectCountry);
-    console.log(data);
-
+    
     return (
         <div className='flex flex-wrap justify-evenly min-h-screen'>
             { 
