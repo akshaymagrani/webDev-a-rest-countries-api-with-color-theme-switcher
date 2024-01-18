@@ -19,7 +19,7 @@ function Details() {
         region,
         subregion,
         capital,
-        topLevelDomain,
+        tld,
         currencies,
         languages,
         borders,
@@ -45,6 +45,20 @@ function Details() {
             nestedCurrency = currencies[key].name;
             break;
         }
+    }
+
+    const languageKeys = languages ? Object.keys(languages) : [];
+    let nestedLanguages = [];
+
+    for (const key of languageKeys) {
+        nestedLanguages.push(languages[key]);
+    }
+
+    const tldKeys = tld ? Object.keys(tld) : [];
+    let nestedtld = [];
+
+    for (const key of tldKeys) {
+        nestedtld.push(tld[key]);
     }
 
     return (
@@ -86,13 +100,14 @@ function Details() {
                         </div>
                         <div className="div-card-body-width my-4 mt-md-0">
                             <p className="card-text fw-bold mb-1">Top Level Domain:
-                                {topLevelDomain ? <span className="topLevelDomain fw-light"> {/*topLevelDomain*/}</span> : <span></span>}
+                                {tld ? <span className="topLevelDomain fw-light"> {nestedtld}</span> : <span></span>}
                             </p>
                             <p className="card-text fw-bold mb-1">Currencies:
                                 {nestedCurrency ? <span className="currencies fw-light"> {nestedCurrency}</span> : <span></span>}
                             </p>
                             <p className="card-text fw-bold mb-1">Languages:
-                                {languages ? <span className="languages fw-light"> {/*languages*/}</span> : <span></span>}
+                                {languages ? <span className="languages fw-light"> {nestedLanguages[0]}</span> : <span></span>}
+                                {languages ? <span className="languages fw-light"> {nestedLanguages[1]}</span> : <span></span>}
                             </p>
                         </div>
                     </div>

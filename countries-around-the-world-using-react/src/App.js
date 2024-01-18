@@ -15,21 +15,15 @@ function App() {
     setTheme(prevTheme => !prevTheme);
   }
 
-  // const [country, setCountry] = useState([]);
-
-  // useEffect(() => {
-  //   // fetch('https://restcountries.com/v3.1/all?fields=name,capital,currencies,population')
-  //   fetch('https://restcountries.com/v3.1/all')
-  //   .then((res) => res.json())
-  //   .then((data) => setCountry(data));
-  // }
-  // ,[]);
-
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Header theme={theme} changeTheme={changeTheme} />}>
+          <Route path='/' element={
+            <div className={`${theme ? 'lightTheme' : 'darkTheme'}`}>
+              <Header theme={theme} changeTheme={changeTheme} />
+            </div>}
+          >
             <Route index='/' element={     
                 <div className={`${theme ? 'lightTheme': 'darkTheme'}`}>
                   <div className='mx-auto max-w-5xl'>
@@ -38,7 +32,11 @@ function App() {
                   </div>
                 </div>}
             />
-            <Route path='details/:id' element={<Details />} />
+            <Route path='details/:id' element={
+              <div className={`${theme ? 'lightTheme' : 'darkTheme'}`}>
+                <Details />
+              </div>
+            }/>
           </Route>
         </Routes>
       </BrowserRouter>
